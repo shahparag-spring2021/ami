@@ -6,3 +6,6 @@ crash.log
 
 # For built boxes
 *.box
+
+# Shell script with AWS user variables
+*.sh
