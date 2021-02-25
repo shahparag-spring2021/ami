@@ -45,7 +45,6 @@
         {
             "type": "shell",
             "inline": [
-                "sudo yum update",
                 "sudo apt-get install zip unzip -qy"
             ]
         }
