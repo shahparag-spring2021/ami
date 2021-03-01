@@ -45,7 +45,9 @@
         {
             "type": "shell",
             "inline": [
-                "sudo apt-get install zip unzip -qy"
+                    "sudo apt-get update",
+                    "sudo apt-get install zip unzip -qy",
+                    "sudo apt-get install sqlite3"
             ]
         }
         
