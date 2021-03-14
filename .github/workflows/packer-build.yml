@@ -26,7 +26,6 @@ jobs:
             echo env.TEST_ENV_2
             printenv
     
-
       # - name: Packer build
       #   uses: riznob/packer-build-action@v1.1
       #   with:
