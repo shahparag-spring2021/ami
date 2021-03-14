@@ -1,0 +1,10 @@
+{
+    "aws_region": "us-east-1",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "source-ami": "ami-03d315ad33b9d49c4",
+    "ssh_username": "ubuntu",
+    "prod_account_id": "578033826244",
+    "vpc_id": "vpc-fda80180",
+    "subnet_id": "subnet-34188552"
+}
