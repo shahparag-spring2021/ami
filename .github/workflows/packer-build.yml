@@ -7,9 +7,9 @@ env:
   TEST_ENV_2: "Testing env 2"
 
 on:
-  pull_request:
-  # pull_request_target:
-  #   types: [opened,reopened]
+  # pull_request:
+  pull_request_target:
+    types: [opened,reopened]
     branches:
         - 'main'
 jobs:
