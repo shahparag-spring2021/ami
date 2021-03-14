@@ -8,5 +8,3 @@ jobs:
   packer_build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v1
