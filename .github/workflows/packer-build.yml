@@ -21,7 +21,6 @@ jobs:
         run: |
             echo ${{ env.AWS_ACCESS_KEY_ID}}
             echo ${{ env.AWS_SECRET_ACCESS_KEY}}
-            echo env.TEST_ENV
             printenv
     
 
@@ -37,3 +36,4 @@ jobs:
       #     AWS_DEFAULT_REGION: us-east-1
       #     AWS_SOURCE_AMI: ${{ secrets.AWS_SOURCE_AMI }}
       #     AWS_PROD_ACCOUNT_ID: ${{ secrets.AWS_PROD_ACCOUNT_ID }}
+      
