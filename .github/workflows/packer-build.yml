@@ -8,9 +8,10 @@ env:
   TEST_ENV_3: ${{ secrets.TEST_ENV_3 }}
 
 on:
-  pull_request_target:
-    types: [opened,reopened]
-  push:
+  pull_request:
+  # pull_request_target:
+  #   types: [opened,reopened]
+  # push:
     branches: [ main ]
 
 jobs:
@@ -20,10 +21,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      
+      - name: Packer Build
+        run: packer build -var 'aws_access_key=${{secrets.AWS_ACCESS_KEY_ID}}' -var 'aws_secret_key=${{secrets.AWS_SECRET_ACCESS_KEY}}' -var 'aws_region=us-east-1' packer-template.json
 
-      - name: Test variables
-        run: |
-            printenv
+      # - name: Test variables
+      #   run: |
+      #       printenv
     
       # - name: Packer build
       #   uses: riznob/packer-build-action@v1.1
@@ -37,3 +41,4 @@ jobs:
       #     AWS_DEFAULT_REGION: us-east-1
       #     AWS_SOURCE_AMI: ${{ secrets.AWS_SOURCE_AMI }}
       #     AWS_PROD_ACCOUNT_ID: ${{ secrets.AWS_PROD_ACCOUNT_ID }}
+      #     packer-template.json

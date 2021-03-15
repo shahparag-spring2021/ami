@@ -3,11 +3,11 @@
         "aws_access_key": "",
         "aws_secret_key": "",
         "aws_region": "",
-        "source_ami": "",
+        "source_ami": "ami-03d315ad33b9d49c4",
         "ssh_username": "ubuntu",
-        "prod_account_id": "",
-        "vpc_id": "",
-        "subnet_id": ""
+        "prod_account_id": "578033826244",
+        "vpc_id": "vpc-fda80180",
+        "subnet_id": "subnet-34188552"
     },
     "builders": [
         {
