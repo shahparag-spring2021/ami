@@ -2,9 +2,10 @@ name: Run packer build
 
 on:
   pull_request:
-    branches:
-        - 'main'
+    branches: [ main ]
+
 jobs:
-  packer_build:
+  build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
