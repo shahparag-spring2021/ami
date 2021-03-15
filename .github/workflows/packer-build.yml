@@ -6,10 +6,10 @@ env:
   TEST_ENV: ${{ secrets.TEST_ENV }}
   TEST_ENV_2: "Testing env 2"
 
-on: [push, pull_request_target]
-  # pull_request_target:
-  #   types: [opened,reopened]
-  # pull_request:
+on:
+  pull_request_target:
+    types: [opened,reopened]
+  pull_request:
     branches: [ main ]
 
 jobs:
