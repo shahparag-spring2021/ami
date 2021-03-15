@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Packer Build
-        run: packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'source_ami=ami-03d315ad33b9d49c4' -var 'subnet_id=subnet-34188552' -var 'prod_account_id=578033826244' packer-template.json
+        run: packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'source_ami=${{ secrets.AWS_SOURCE_AMI }}' -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' -var 'prod_account_id=${{ secrets.AWS_PROD_ACCOUNT_ID }}' packer-template.json
 
       # - name: Packer build
       #   uses: riznob/packer-build-action@v1.1
