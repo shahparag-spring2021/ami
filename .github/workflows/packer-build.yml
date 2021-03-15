@@ -5,6 +5,7 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   TEST_ENV: ${{ secrets.TEST_ENV }}
   TEST_ENV_2: "Testing env 2"
+  TEST_ENV_3: ${{ secrets.TEST_ENV_3 }}
 
 on:
   pull_request_target:
@@ -22,10 +23,6 @@ jobs:
 
       - name: Test variables
         run: |
-            echo env.AWS_ACCESS_KEY_ID
-            echo env.AWS_SECRET_ACCESS_KEY
-            echo env.TEST_ENV
-            echo env.TEST_ENV_2
             printenv
     
       # - name: Packer build
