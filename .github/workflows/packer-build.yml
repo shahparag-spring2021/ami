@@ -3,11 +3,10 @@ name: Run packer build
 on:
   pull_request:
     branches: [ main ]
-    
+
 jobs:
-  build:
+  packer_build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
