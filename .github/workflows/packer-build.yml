@@ -13,7 +13,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  packer_build:
     runs-on: ubuntu-latest
 
     steps:
