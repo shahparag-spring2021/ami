@@ -1,32 +1,27 @@
-name: Run Packer AMI build
-
+name: Build Packer on Merge
+ 
 on:
-  pull_request:
+  push:
     branches: [ main ]
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout repository
+      - name: Checkout Repository to build ami
         uses: actions/checkout@v2
 
-      - name: Packer Validate
-        run: packer validate -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'source_ami=${{ secrets.AWS_SOURCE_AMI }}' -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' -var 'prod_account_id=${{ secrets.AWS_PROD_ACCOUNT_ID }}' ami.json
+      # - name: Packer Build
+      #   run: packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'source_ami=${{ secrets.AWS_SOURCE_AMI }}' -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' -var 'prod_account_id=${{ secrets.AWS_PROD_ACCOUNT_ID }}' ami.json
 
-      - name: Packer Build
-        run: packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'source_ami=${{ secrets.AWS_SOURCE_AMI }}' -var 'subnet_id=${{ secrets.AWS_SUBNET_ID }}' -var 'prod_account_id=${{ secrets.AWS_PROD_ACCOUNT_ID }}' ami.json
-
-      # - name: Packer build
-      #   uses: riznob/packer-build-action@v1.1
-      #   with:
-      #     templateFile: 'packer-template.json'
-      #     varFile: 'packer-vars.json'
-      #     workingDir: '.'
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_DEFAULT_REGION: us-east-1
-      #     AWS_SOURCE_AMI: ${{ secrets.AWS_SOURCE_AMI }}
-      #     AWS_PROD_ACCOUNT_ID: ${{ secrets.AWS_PROD_ACCOUNT_ID }}
+      - name: Build AMI
+        uses: docker://hashicorp/packer:light
+        env:
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-subnet-id: ${{ secrets.AWS_SUBNET_ID }}
+          aws-ami-users: ${{ secrets.AWS_PROD_ACCOUNT_ID }}
+          aws-source-ami: ${{ secrets.AWS_SOURCE_AMI }}
+        with:
+          args: "build ami.json"
