@@ -25,4 +25,4 @@ jobs:
           aws-ami-users: ${{ secrets.AWS_PROD_ACCOUNT_ID }}
           aws-source-ami: ${{ secrets.AWS_SOURCE_AMI }}
         with:
-          args: "validate ami.json"
+          args: "build ami.json"
