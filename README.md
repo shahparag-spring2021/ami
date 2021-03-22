@@ -15,3 +15,4 @@ Supply the necessary user variables in this shell script
 Running the .sh script - ./buildAmi.sh
 
 Checking actions
+<!-- To test -->
